@@ -1,0 +1,76 @@
+{
+  "name": "bear-cli",
+  "version": "0.1.0",
+  "description": "A simple CLI tool boilerplate.",
+  "bin": {
+    "web": "./bin/web"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thoughtbit/bear-cli.git"
+  },
+  "keywords": [
+    "cli"
+  ],
+  "authors": [
+    "moocss <moocss@gmail.com> (https://github.com/moocss)"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/thoughtbit/bear-cli/issues"
+  },
+  "homepage": "https://github.com/thoughtbit/bear-cli#readme",
+  "files": [
+    "bin",
+    "src",
+    "lib",
+    ".eslintrc"
+  ],
+  "scripts": {
+    "build": "rimraf lib && babel src --out-dir lib",
+    "cli:init": "node ./lib/cli/init.js",
+    "lint": "eslint --ext .js src",
+    "precommit": "npm run lint",
+    "pub": "npm publish && git push origin"
+  },
+  "nyc": {
+    "include": [
+      "src/**/*.js"
+    ],
+    "require": [
+      "babel-register"
+    ],
+    "sourceMap": true,
+    "instrument": false
+  },
+  "dependencies": {
+    "babel-core": "^6.23.1",
+    "babel-register": "^6.23.1",
+    "babel-preset-es2015": "^6.23.1",
+    "babel-preset-stage-2": "^6.23.1",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "caporal": "^0.7.0",
+    "change-case": "^3.0.1",
+    "cross-spawn": "^5.1.0",
+    "download-git-repo": "^1.0.1",
+    "load-json-file": "^2.0.0",
+    "lodash": "^4.17.4",
+    "rimraf": "^2.5.4",
+    "chalk": "^1.1.3",
+    "loglevel": "^1.4.1",
+    "ora": "^1.3.0",
+    "shelljs": "^0.7.8",
+    "update-notifier": "^2.2.0",
+    "execa": "^0.7.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.23.1",
+    "eslint": "^3.14.1",
+    "eslint-config-standard": "^6.2.1",
+    "eslint-plugin-promise": "^3.4.0",
+    "eslint-plugin-standard": "^2.0.1"
+  },
+  "engines": {
+    "node": ">=6.5.0"
+  }
+}
