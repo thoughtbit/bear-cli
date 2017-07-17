@@ -1,6 +1,6 @@
 import log from 'loglevel'
 
-function task(args, options) {
+function task (args, options) {
   const version = require('../../package.json').version
   if (log.getLevel() >= log.levels.INFO) {
     return log.info(version)
@@ -9,7 +9,7 @@ function task(args, options) {
   log.debug(logo)
 }
 
-function register(program) {
+function register (program) {
   program.command('version', '当前版本').action(task)
 }
 

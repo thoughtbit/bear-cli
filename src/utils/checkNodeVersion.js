@@ -1,11 +1,12 @@
 import os from 'os'
+import chalk from 'chalk'
 
 const nodeVersion = process.versions.node
 const versions = nodeVersion.split('.')
 const major = versions[0]
 const minor = versions[1]
 const platform = os.platform()
-const minNodeVersion = 65;
+const minNodeVersion = 65
 
 if (((major * 10) + (minor * 1)) < minNodeVersion) {
   console.log(chalk.red(`Node version (${major}.${minor}) is not compatibile, ${chalk.cyan('must >= 6.5')}.`))

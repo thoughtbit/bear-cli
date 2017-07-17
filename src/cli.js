@@ -19,9 +19,9 @@ module.exports = {
     updateNotifier({ pkg }).notify()
     program.version(pkg.version).description('A command line scaffolding tool and helper for Boldr.')
 
-    version.register(program);
-    build.register(program);
-    init.register(program);
+    version.register(program)
+    build.register(program)
+    init.register(program)
 
     program.parse(process.argv)
   }

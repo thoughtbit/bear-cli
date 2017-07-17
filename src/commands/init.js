@@ -3,19 +3,28 @@ import path from 'path'
 import downloadGitRepo from 'download-git-repo'
 import execa from 'execa'
 import log from 'loglevel'
+import spinner from './../utils/spinner'
 
-import { getPkg } from './../utils/pkg'
+import { getPkgConfig } from './../utils/getPkgConfig'
 
-function npmInstall(projectDir: string) {
-  return getPkg(projectDir).then(() => {
+function npmInstall (projectDir) {
+  return getPkgConfig(projectDir).then(() => {
     execa('yarn', ['install'], { cwd: projectDir })
   })
 }
 
-function task(args, options) {
+function download () {
+  spinner.text = 'Downloading template...'
+  spinner.start()
+}
+
+function task (args, options) {
   const dirName = args.dir
-  const projectDir = path.join(process.cwd(), dirName);
+  const projectDir = path.join(process.cwd(), dirName)
+  spinner.text = 'Downloading template...'
+  spinner.start()
   downloadGitRepo('thoughtbit/bee-vue-demo', projectDir, err => {
+    spinner.stop()
     if (err) {
       return log.error(err)
     }
@@ -23,7 +32,7 @@ function task(args, options) {
   })
 }
 
-function register(program) {
+function register (program) {
   program
     .command('init', 'initialize a new Web App project.')
     .argument('<dir>', 'Directory name')
